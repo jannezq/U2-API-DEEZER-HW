@@ -2,7 +2,7 @@
 // strive api deezerurl https://striveschool-api.herokuapp.com/api/deezer/search
 
 //fetch API
-const getSongs = () => {
+const getSongsPinkFloyd = () => {
   fetch(
     "https://striveschool-api.herokuapp.com/api/deezer/search?q=pinkfloyd",
     {
@@ -32,16 +32,17 @@ const createCardAlbum = (dataAlbum) => {
     // ul.innerHTML += `<li><img src="${singleAlbum.album.cover_big}">  <span>Title: ${singleAlbum.album.title}</span>`;
 
     albumContainer.innerHTML += `
-    <div class="card">
-        <img src="${singleAlbum.album.cover_big}" class="card-img-top">
-        <div class="card-body">
-            <h5 class="card-title">${singleAlbum.album.title}</h5>
-        </div>
-    </div>
-    `;
+        <div class="col col-3 px-1 mb-2">
+            <div class="card">
+                <img src="${singleAlbum.album.cover_big}" class="card-img-top">
+                <div class="card-body">
+                    <h5 class="card-title">${singleAlbum.album.title}</h5>
+                </div>
+            </div>
+     `;
   }
 };
 
 window.onload = () => {
-  getSongs();
+  getSongsPinkFloyd();
 };
