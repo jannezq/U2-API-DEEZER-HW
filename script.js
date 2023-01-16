@@ -16,19 +16,32 @@ const getSongs = () => {
     .then((rawAlbums) => {
       return rawAlbums.json();
     })
-    .then((jsonAlbums) => {
-      console.log(jsonAlbums.data);
-
-      let ul = document.querySelector("ul");
-      for (let i = 0; i < jsonAlbums.data.length; i++) {
-        const singleAlbum = jsonAlbums.data[i];
-        // let li = document.createElement("li");
-        // li.innerText = singleAlbum.title;
-        // ul.appendChild(li);
-        ul.innerHTML += `<li><img src="${singleAlbum.md5_image}">  <span>Title: ${singleAlbum.title}</span>`;
-      }
+    .then((dataAlbum) => {
+      console.log(dataAlbum), createCardAlbum(dataAlbum);
     })
     .catch((err) => console.log(err));
 };
 
-getSongs();
+// getSongs();
+
+const createCardAlbum = (dataAlbum) => {
+  let albumContainer = document.getElementById("album-area");
+  let jsonAlbumsArray = dataAlbum.data;
+  for (let i = 0; i < jsonAlbumsArray.length; i++) {
+    const singleAlbum = jsonAlbumsArray[i];
+    // ul.innerHTML += `<li><img src="${singleAlbum.album.cover_big}">  <span>Title: ${singleAlbum.album.title}</span>`;
+
+    albumContainer.innerHTML += `
+    <div class="card">
+        <img src="${singleAlbum.album.cover_big}" class="card-img-top">
+        <div class="card-body">
+            <h5 class="card-title">${singleAlbum.album.title}</h5>
+        </div>
+    </div>
+    `;
+  }
+};
+
+window.onload = () => {
+  getSongs();
+};
