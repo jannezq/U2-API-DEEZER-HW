@@ -124,6 +124,18 @@ const createCardAlbumMeta = (dataAlbum) => {
 };
 
 //get song list
+const getSongList = () => {
+  let songListArea = document.querySelector("#songListModal ol");
+  let songListTitle = document.querySelectorAll(".card-title");
+  songListArea.innerHTML = "";
+  for (let i = 0; i < songListTitle.length; i++) {
+    songListArea.innerHTML += `
+
+    <li>${songListTitle[i].innerHTML}</li>
+
+    `;
+  }
+};
 
 window.onload = () => {
   getSongsPinkFloyd();
