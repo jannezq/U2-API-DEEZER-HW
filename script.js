@@ -137,6 +137,17 @@ const getSongList = () => {
   }
 };
 
+const getUniqueNumber = () => {
+  let uniqueNode = document.querySelectorAll(".card");
+  let uniqueAlbumList = [];
+  for (let i = 0; i < uniqueNode.length; i++) {
+    if (!uniqueAlbumList.includes(uniqueNode[i].id)) {
+      uniqueAlbumList.push(uniqueNode[i].id);
+    }
+  }
+  console.log(uniqueAlbumList.length);
+};
+
 window.onload = () => {
   getSongsPinkFloyd();
   getSongsDaftPunk();
